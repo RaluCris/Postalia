@@ -1,0 +1,37 @@
+<header>
+<h1>WorldWideStories</h1>
+<nav >
+ <ul class='navigation'>
+   <% if current_user %>
+   <li><%= link_to 'Home', home_path, :class=> 'home'%></li>
+   <%end%>
+   <li><%= link_to 'stories', posts_path ,:class=>'stories'%></li>
+   <li>popular </li>
+   <li>videos </li>
+   <li>funny </li>
+   <li>more </li>
+ </ul>
+</nav>
+</header>
+<main>
+<% if !current_user %>
+  <div class='sign'>
+  <p>Welcome to WWS, <%= link_to "Sign Up" , new_user_registration_path %> or
+  <%= link_to "Sign In" , new_user_session_path %></p>
+  </div>
+<%end%>
+<p id="notice"><%= notice %></p>
+
+    <% @posts.each do |post| %>
+    <div class="post" >
+        <p><%= link_to post.title ,post, :class=>'title' %></p>
+        <p class="comments_count"><%=pluralize(post.comments.count, 'comment')%></p>
+        <p class="username">Submitted by<strong> <%=post.user.username %></strong> <%= time_ago_in_words(post.created_at) %> ago</p>
+    </div>
+    <% end %>
+</main>
+<footer>
+<% if current_user %>
+<%= link_to 'Sign Out', destroy_user_session_path, method: :delete, :class=>'sign_out' %>
+<%end%>
+</footer>

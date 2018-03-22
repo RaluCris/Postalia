@@ -1,0 +1,126 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+*{
+  box-sizing: border-box;
+}
+body{
+  margin: 20px;
+  background-color: #f0f2f4;
+}
+/***************
+HEADER
+****************/
+.sign {
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.navigation{
+  background-color:#9099a2;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  text-transform: uppercase;
+  color:darkblue;
+  font-size: 15px;
+  list-style: none;
+}
+.navigation li,
+.home,
+.stories{
+  margin:5px;
+  color:black;
+  text-decoration: none;
+}
+
+h1{
+  text-align: center;
+  background-color:#96858f;
+  padding:30px;
+  margin-bottom:-15px;
+  margin-top: -5px;
+}
+/************
+POST
+*************/
+.post{
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  margin-bottom:15px;
+}
+.show_content{
+  font-size:20px;
+  padding:10px 20px;
+}
+.show_post{
+  background-color: white;
+  padding:7px;
+  margin: 20px;
+}
+.title{
+  font-size: 22px;
+  text-decoration: none;
+  margin-left: 40px;
+  color:black;
+}
+.show_title{
+  font-size:30px;
+  text-align: center;
+  margin-bottom:-10px;
+}
+.username{
+  color:#ff8080;
+  font-size: 15px;
+  margin-left:40px;
+}
+.current_user_choice{
+  display:flex;
+  text-transform: lowercase;
+  margin-left: 30px;
+}
+.edit,
+.delete{
+  margin-left: 10px;
+  text-decoration: none;
+  color: #a5a5af;
+}
+.sign_out{
+  margin-left: 45%;
+  text-decoration: none;
+  color: #a5a5af;
+}
+/*************
+COMMENTS
+**************/
+.comment_content{
+  padding:5px;
+  font-style: oblique;
+  margin-left: 10px;
+}
+.comment{
+  margin: 20px;
+  background-color: white;
+  display:flex;
+  flex-direction: column;
+}
+.under_comment{
+  display:flex;
+}
+.under_comment p{
+  padding:5px;
+  margin:10px;
+}
+.comments_form{
+  margin-left:20px;
+}
+.comments_count{
+  margin:20px;
+}
+.subcomment{
+  display:flex;
+}

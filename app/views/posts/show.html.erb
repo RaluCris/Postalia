@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+<h1>WorldWideStories</h1>
+<nav>
+ <ul class='navigation'>
+   <% if current_user%>
+   <li><%= link_to 'Home', home_path, :class=>'home'%></li>
+   <%end%>
+   <li><%= link_to 'stories', posts_path ,:class=>'stories'%></li>
+   <li>popular </li>
+   <li>videos </li>
+   <li>funny </li>
+   <li>more </li>
+ </ul>
+</nav>
+<div class="show_post">
+<p class="show_title">
+  <%= @post.title%>
+</p>
+
+<p class="show_content">
+  <%= @post.content %>
+</p>
+<p class="username">Submitted by <strong><%=@post.user.username %></strong> <%= time_ago_in_words(@post.created_at) %> ago</p>
+</div>
+<% if @post.user==current_user%>
+<div class="current_user_choice">
+<p><%= link_to 'Edit', edit_post_path(@post),:class=>'edit'%></p>
+<p><%= link_to 'delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, :class=>'delete'%></p>
+<%end%>
+</div>
+<h2>Comments</h2>
+<%= render template: 'comments/index' %>
+<footer>
+<% if current_user %>
+<%= link_to 'Sign Out', destroy_user_session_path, method: :delete, :class=>'sign_out' %>
+<%end%>
+</footer>

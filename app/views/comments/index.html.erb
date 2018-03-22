@@ -1,0 +1,20 @@
+
+<%=render "comments/form" %>
+<% @comments.each do |comment| %>
+  <%var=comment.user_id%>
+  <%user=User.find(var)%>
+  <%comment_username=user.username%>
+  <div class="comment">
+  <p class="comment_content">" <%= comment.content %> "</p>
+  <div class="under_comment">
+  <p class="username"><strong><%=comment_username%></p></strong>
+  <p><%= time_ago_in_words(comment.created_at) %> ago</p>
+  <% if comment.user==current_user %>
+  <p><%= link_to 'delete', [comment.post,comment],method: :delete, :class=>'delete'%></p>
+  <p><%= link_to 'leave comment' , post_comment_path(@post, comment)	 %>
+  </p>
+  <%end%>
+  </div>
+  </div>
+  </div>
+<%end%>
