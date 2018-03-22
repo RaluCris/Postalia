@@ -1,5 +1,6 @@
 class SubcommentsController < ApplicationController
 before_action :find_comment, :find_post
+before_action :authenticate_user!
 
 
   def create

@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :find_post
   before_action :find_comment, only: [:destroy]
+  before_action :authenticate_user!, except:[:show]
   def index
     @comments=Comment.all
   end
