@@ -27,6 +27,12 @@
         <p><%= link_to post.title ,post, :class=>'title' %></p>
         <p class="comments_count"><%=pluralize(post.comments.count, 'comment')%></p>
         <p class="username">Submitted by<strong> <%=post.user.username %></strong> <%= time_ago_in_words(post.created_at) %> ago</p>
+          <%= form_for([post,post.votes.build]) do |f| %>
+            <%= f.number_field :vote ,value: 1, type: :hidden %>
+            <%= f.submit :Yes %>
+            <%= f.number_field :vote ,value: -1, type: :hidden %>
+            <%= f.submit :No %>
+         <%end%>
     </div>
     <% end %>
 </main>
