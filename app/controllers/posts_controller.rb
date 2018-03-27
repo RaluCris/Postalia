@@ -4,8 +4,17 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+<<<<<<< HEAD
      @posts = Post.all.order(total_votes: :desc)
      @votes=Vote.all
+=======
+    @posts = Post.all
+    if params[:search]
+    @posts = Post.search(params[:search])
+  else
+    @posts = Post.all
+  end 
+>>>>>>> add_search_menu
   end
 
   # GET /posts/1
