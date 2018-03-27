@@ -21,18 +21,24 @@
   </div>
 <%end%>
 <p id="notice"><%= notice %></p>
-
     <% @posts.each do |post| %>
     <div class="post" >
         <p><%= link_to post.title ,post, :class=>'title' %></p>
         <p class="comments_count"><%=pluralize(post.comments.count, 'comment')%></p>
         <p class="username">Submitted by<strong> <%=post.user.username %></strong> <%= time_ago_in_words(post.created_at) %> ago</p>
-          <%= form_for([post,post.votes.build]) do |f| %>
+        <% if current_user %>
+          <%= form_for([post,post.vote_for(current_user)]) do |f| %>
             <%= f.number_field :vote ,value: 1, type: :hidden %>
-            <%= f.submit :Yes %>
+            <%= f.submit :Yes, disabled: f.object.vote==1 %>
+            <%end%>
+            <%= post.votes.sum(:vote) %>
+         <%= form_for([post,post.vote_for(current_user)]) do |f| %>
             <%= f.number_field :vote ,value: -1, type: :hidden %>
-            <%= f.submit :No %>
+            <%= f.submit :No, disabled: f.object.vote==-1%>
          <%end%>
+        <% else %>
+         <%= post.votes.sum(:vote) %>
+        <%end%>
     </div>
     <% end %>
 </main>
