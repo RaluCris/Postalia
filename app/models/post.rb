@@ -8,4 +8,8 @@ class Post < ApplicationRecord
       current_user.id).presence ||
       votes.new
   end
+
+  def update_votes
+    self.update(total_votes: self.votes.sum(:vote))
+  end
 end

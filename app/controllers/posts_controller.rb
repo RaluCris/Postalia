@@ -4,8 +4,8 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
-    @votes=Vote.all
+     @posts = Post.all.order(total_votes: :desc)
+     @votes=Vote.all
   end
 
   # GET /posts/1
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = current_user.posts.build(post_params)
-
+    @post.total_votes=@post.votes.sum(:vote)
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }

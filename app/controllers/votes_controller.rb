@@ -6,16 +6,20 @@ class VotesController < ApplicationController
   def create
     @vote=@post.votes.create(vote_params.merge(user: current_user))
     @vote.save
-    redirect_to posts_path, success: 'Voted'
+
+    @post.update_votes
+    redirect_to posts_path ,succes:'Voted'
   end
 
   def update
     @vote.update(vote_params)
+    @post.update_votes
     redirect_to posts_path, succes:'Vote changed'
   end
 
   def delete
     @vote.destroy
+    @post.update_votes
     redirect_to posts_path, succes:'Vote deleted'
   end
 
