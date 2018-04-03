@@ -1,0 +1,20 @@
+<% @posts.each do |post| %>
+<div class="post" >
+    <p><%= link_to post.title ,post, :class=>'title' %></p>
+    <p class="comments_count"><%=pluralize(post.comments.count, 'comment')%></p>
+    <p class="username">Submitted by<strong> <%=post.user.username %></strong> <%= time_ago_in_words(post.created_at) %> ago</p>
+    <% if current_user %>
+      <%= form_for([post,post.vote_for(current_user)]) do |f| %>
+        <%= f.number_field :vote ,value: 1, type: :hidden %>
+        <%= f.submit :Like, disabled: f.object.vote==1 %>
+        <%end%>
+        <%= post.total_votes %>
+     <%= form_for([post,post.vote_for(current_user)]) do |f| %>
+        <%= f.number_field :vote ,value: -1, type: :hidden %>
+        <%= f.submit :Dislike, disabled: f.object.vote==-1%>
+     <%end%>
+    <% else %>
+     <%= post.votes.sum(:vote) %>
+    <%end%>
+</div>
+<% end %>

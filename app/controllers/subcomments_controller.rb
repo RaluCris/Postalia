@@ -1,7 +1,7 @@
 class SubcommentsController < ApplicationController
 before_action :find_comment, :find_post
 before_action :authenticate_user!
-
+load_and_authorize_resource
 
   def create
     @subcomment=@comment.subcomments.create(subcomment_params)

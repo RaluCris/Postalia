@@ -1,19 +1,5 @@
 <p id="notice"><%= notice %></p>
-<header>
-<h1>WorldWideStories</h1>
-<nav >
- <ul class='navigation'>
-   <% if current_user %>
-   <li><%= link_to 'Home', home_path, :class=> 'home'%></li>
-   <%end%>
-   <li><%= link_to 'stories', posts_path ,:class=>'stories'%></li>
-   <li>popular </li>
-   <li>videos </li>
-   <li>funny </li>
-   <li>more </li>
- </ul>
-</nav>
-</header>
+
 <h2>Comments</h2>
 <div class="comment">
 <%= @comment.content %>

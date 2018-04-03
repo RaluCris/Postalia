@@ -9,6 +9,21 @@
   </head>
 
   <body>
+    <header>
+    <h1>WorldWideStories</h1>
+    <nav >
+     <ul class='navigation'>
+       <% if current_user %>
+       <li><%= link_to 'Home', home_path, :class=> 'home'%></li>
+       <%end%>
+       <li><%= link_to 'stories', posts_path ,:class=>'stories'%></li>
+       <li><%= link_to 'popular', posts_popular_path %> </li>
+       <li>videos </li>
+       <li><%= link_to 'funny' ,posts_funny_path %> </li>
+       <li>more </li>
+     </ul>
+    </nav>
+  </header>
     <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>

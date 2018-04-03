@@ -1,20 +1,16 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index ,:show]
+  before_action :authenticate_user!, except: [:index ,:show, :popular, :funny]
+  load_and_authorize_resource
   # GET /posts
   # GET /posts.json
   def index
-<<<<<<< HEAD
-     @posts = Post.all.order(total_votes: :desc)
-     @votes=Vote.all
-=======
     @posts = Post.all
-    if params[:search]
-    @posts = Post.search(params[:search])
-  else
-    @posts = Post.all
-  end 
->>>>>>> add_search_menu
+      if params[:search]
+        @posts = Post.search(params[:search]).order(total_votes: :desc)
+      else
+        @posts = Post.all.order(total_votes: :desc)
+      end
   end
 
   # GET /posts/1
@@ -70,6 +66,14 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def popular
+    @posts = Post.all.order(total_votes: :desc).limit(5)
+  end
+
+  def funny
+    @posts = Post.search('funny').order(total_votes: :desc)
   end
 
   private

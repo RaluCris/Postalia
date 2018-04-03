@@ -2,6 +2,7 @@ class VotesController < ApplicationController
   before_action :find_post
   before_action :find_vote , only: [:update,:delete]
   before_action :authenticate_user!
+  load_and_authorize_resource
 
   def create
     @vote=@post.votes.create(vote_params.merge(user: current_user))
