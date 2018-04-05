@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Genre.create(genre: 'funny')
+Genre.create(genre: 'video')
+Genre.create(genre: 'worldnews')
+Genre.create(genre: 'movie')
+Genre.create(genre: 'random')

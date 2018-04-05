@@ -20,7 +20,13 @@
     <%= f.label :content %>
     <%= f.text_area :content %>
   </div>
-  
+
+  <div class="field">
+    <%= f.label :cathegory %>
+    <%= f.select :genre, options_for_select(genres.collect { |genre|
+    genre.genre } )%>
+  </div>
+
 
   <div class="actions">
     <%= f.submit %>
