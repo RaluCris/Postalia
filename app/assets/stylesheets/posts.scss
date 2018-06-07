@@ -1,6 +1,11 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*****************************************************
+                         UNIVERSAL
+******************************************************/
+
 *{
   box-sizing: border-box;
 }
@@ -8,16 +13,13 @@ body{
   margin: 20px;
   background-color: #f0f2f4;
 }
-/***************
-HEADER
-****************/
-.sign {
-  display:flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
+
+/***************************************************************
+                            HEADER
+*****************************************************************/
+
 .navigation{
-  background-color:#9099a2;
+  background-color:#b6e1fc;
   padding-top: 15px;
   padding-bottom: 15px;
   display:flex;
@@ -30,23 +32,24 @@ HEADER
   list-style: none;
 }
 .navigation li,
-.home,
-.stories{
+.menu{
   margin:5px;
   color:black;
   text-decoration: none;
+  font-family: sans-serif;
 }
 
 h1{
+  font-family: sans-serif;
   text-align: center;
-  background-color:#96858f;
   padding:30px;
   margin-bottom:-15px;
   margin-top: -5px;
+  font-size: 40px;
 }
-/************
-POST
-*************/
+/*******************************************************************
+                               POST
+********************************************************************/
 .post{
   background-color: white;
   display: flex;
@@ -89,14 +92,31 @@ POST
   text-decoration: none;
   color: #a5a5af;
 }
+
+/************************************************************
+                        AUTHENTIFICATION
+**************************************************************/
+
+.sign {
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-size: 20px;
+  font-family:sans-serif;
+}
+.sign_in,
+.sign_up,
+.sign_out,
+.forggot_password {
+  text-decoration: none;
+  color:black;
+}
 .sign_out{
   margin-left: 45%;
-  text-decoration: none;
-  color: #a5a5af;
 }
-/*************
-COMMENTS
-**************/
+/**************************************************************
+                              COMMENTS
+****************************************************************/
 .comment_content{
   padding:5px;
   font-style: oblique;
