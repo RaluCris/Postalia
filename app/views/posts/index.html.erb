@@ -14,7 +14,6 @@
   <%= link_to "sign In" , new_user_session_path, :class=>'sign_in' %></p>
   </div>
 <%end%>
-<p id="notice"><%= notice %></p>
     <% @posts.each do |post| %>
     <div class="post" >
         <p><%= link_to post.title ,post, :class=>'title' %></p>
@@ -35,6 +34,14 @@
         <%end%>
     </div>
     <% end %>
+    <div>
+      <p class="spoiler">
+		<span>Darth Vader is Luke Skywalker's Father! Noooooooooooo!</span>
+	</p>
+  <p class="spoiler">
+		<span>Jar Jar Binks is Sith!</span>
+	</p>
+    </div>
 </main>
 <footer>
 <% if current_user %>
