@@ -1,23 +1,12 @@
 $(document).on('turbolinks:load', function() {
 
-  $('#notice').hide().slideDown(1000).delay(3000).slideUp();
-
-
-  $('.spoiler').on('click', 'button', function(event){
-    $(this).prev().show();
-    $(this).hide();
-  });
-  // Create the "Reveal Spoiler" button
-  const $button = $('<button>Reveal Spoiler</button>');
-  //Append to web page
-  $('.spoiler').append($button);
-
-  //Hide the spoiler text
-  $('.spoiler span').hide();
+  //$('#notice').hide().slideDown(1000).delay(3000).slideUp();
 
 
   //select title to show show_content
+  $('.content').hide();
   $('.title').click(function(){
-    $('.show_content').show();
+    $(this).next().toggle(1000);
   })
+
 });

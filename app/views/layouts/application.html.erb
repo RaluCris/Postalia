@@ -13,9 +13,7 @@
     <h1>POSTALIA</h1>
     <nav >
      <ul class='navigation'>
-       <% if current_user %>
        <li><%= link_to 'Home', home_path, :class=> 'menu'%></li>
-       <%end%>
        <li><%= link_to 'stories', posts_path ,:class=>'menu'%></li>
        <li><%= link_to 'popular', posts_popular_path, :class=>'menu' %> </li>
        <li>videos </li>

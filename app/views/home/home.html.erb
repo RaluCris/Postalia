@@ -1,7 +1,13 @@
 
-
-<p>Welcome back, <%= current_user.username %>!</p>
-<%= link_to 'New Post', new_post_path %>
-<footer>
-<%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-</footer>
+<% if current_user %>
+  <p>Welcome back, <%= current_user.username %>!</p>
+  <%= link_to 'New Post', new_post_path %>
+  <footer>
+  <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+  </footer>
+<% else %>
+  <div class='sign'>
+  <p>Greetings from Postalia, <%= link_to "sign Up", new_user_registration_path, :class=>'sign_up' %> or
+  <%= link_to "sign In" , new_user_session_path, :class=>'sign_in' %></p>
+  </div>
+<%end%>

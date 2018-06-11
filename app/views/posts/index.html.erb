@@ -1,4 +1,4 @@
-<div>
+<div class= 'search_form'>
   <%= form_tag(posts_path, :method => "get") do %>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :name => nil %>
@@ -8,40 +8,37 @@
 <% end %>
 </div>
 <main>
-<% if !current_user %>
-  <div class='sign'>
-  <p>Greetings from Postalia, <%= link_to "sign Up", new_user_registration_path, :class=>'sign_up' %> or
-  <%= link_to "sign In" , new_user_session_path, :class=>'sign_in' %></p>
-  </div>
-<%end%>
     <% @posts.each do |post| %>
     <div class="post" >
-        <p><%= link_to post.title ,post, :class=>'title' %></p>
+        <p class='title'><%= post.title %></p>
+        <div class='content'>
+          <p><%= post.content %></p>
+          <% if post.user==current_user%>
+          <div class="current_user_choice">
+            <p><%= link_to 'edit', edit_post_path(post),:class=>'edit'%></p>
+            <p><%= link_to 'delete', post, method: :delete, data: { confirm: 'Are you sure?' }, :class=>'delete'%></p>
+          <%end%>
+          </div>
+        </div>
         <p class="comments_count"><%=pluralize(post.comments.count, 'comment')%></p>
         <p class="username">Submitted by<strong> <%=post.user.username %></strong> <%= time_ago_in_words(post.created_at) %> ago</p>
-        <% if current_user %>
-          <%= form_for([post,post.vote_for(current_user)]) do |f| %>
-            <%= f.number_field :vote ,value: 1, type: :hidden %>
-            <%= f.submit :Like, disabled: f.object.vote==1 %>
-            <%end%>
-            <%= post.total_votes %>
-         <%= form_for([post,post.vote_for(current_user)]) do |f| %>
-            <%= f.number_field :vote ,value: -1, type: :hidden %>
-            <%= f.submit :Dislike, disabled: f.object.vote==-1%>
-         <%end%>
-        <% else %>
-         <p><%= post.total_votes%> likes </p>
-        <%end%>
+        <div class='votes'>
+          <% if current_user %>
+            <%= form_for([post,post.vote_for(current_user)]) do |f| %>
+              <%= f.number_field :vote ,value: 1, type: :hidden %>
+              <%= f.submit :Like, disabled: f.object.vote==1 %>
+              <%end%>
+          <p><%= post.total_votes %> likes</p>
+           <%= form_for([post,post.vote_for(current_user)]) do |f| %>
+              <%= f.number_field :vote ,value: -1, type: :hidden %>
+              <%= f.submit :Dislike, disabled: f.object.vote==-1%>
+           <%end%>
+          <% else %>
+           <p><%= post.total_votes%> likes </p>
+          <%end%>
+      </div>
     </div>
     <% end %>
-    <div>
-      <p class="spoiler">
-		<span>Darth Vader is Luke Skywalker's Father! Noooooooooooo!</span>
-	</p>
-  <p class="spoiler">
-		<span>Jar Jar Binks is Sith!</span>
-	</p>
-    </div>
 </main>
 <footer>
 <% if current_user %>

@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /*****************************************************
-                         UNIVERSAL
+                 UNIVERSAL
 ******************************************************/
 
 *{
@@ -11,36 +11,43 @@
 }
 body{
   margin: 20px;
-  background-color: #f0f2f4;
 }
 
 /***************************************************************
-                            HEADER
+                    HEADER
 *****************************************************************/
 
+
+header {
+  background-image: url('mountains.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+}
+
 .navigation{
-  background-color:#b6e1fc;
   padding-top: 15px;
   padding-bottom: 15px;
-  display:flex;
+  display: flex;
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
   text-transform: uppercase;
-  color:darkblue;
-  font-size: 15px;
   list-style: none;
 }
 .navigation li,
 .menu{
   margin:5px;
-  color:black;
+  color: #ff4da6;
+  font-size: 20px;
+  font-weight: bold;
   text-decoration: none;
   font-family: sans-serif;
 }
 
 h1{
-  font-family: sans-serif;
+  font-family:serif;
   text-align: center;
   padding:30px;
   margin-bottom:-15px;
@@ -48,28 +55,35 @@ h1{
   font-size: 40px;
 }
 /*******************************************************************
-                               POST
+                         POST
 ********************************************************************/
+
+.search_form {
+  margin-bottom: 20px;
+  text-align: right;
+  margin-right: 20px;
+}
 .post{
-  background-color: white;
   display: flex;
+  background-color: #f0f2f4;
   flex-direction: column;
   margin-bottom:15px;
 }
-.show_content{
+.content{
   font-size:20px;
   padding:10px 20px;
 }
-.show_post{
+.content{
   background-color: white;
   padding:7px;
   margin: 20px;
 }
 .title{
   font-size: 22px;
+  text-align: center;
   text-decoration: none;
   margin-left: 40px;
-  color:black;
+  color: #1e90ff;
 }
 .show_title{
   font-size:30px;
@@ -77,28 +91,29 @@ h1{
   margin-bottom:-10px;
 }
 .username{
-  color:#ff8080;
+  text-align:right;
+  color: #ff4da6;
   font-size: 15px;
-  margin-left:40px;
+  margin-right:40px;
 }
-.current_user_choice{
-  display:flex;
-  text-transform: lowercase;
+.current_user_choice {
+  font-size: 15px;
   margin-left: 30px;
 }
+
 .edit,
-.delete{
+.delete {
   margin-left: 10px;
   text-decoration: none;
   color: #a5a5af;
 }
 
 /************************************************************
-                        AUTHENTIFICATION
+                  AUTHENTIFICATION
 **************************************************************/
 
 .sign {
-  display:flex;
+  display: flex;
   flex-direction: row;
   justify-content: flex-end;
   font-size: 20px;
@@ -115,7 +130,7 @@ h1{
   margin-left: 45%;
 }
 /**************************************************************
-                              COMMENTS
+                        COMMENTS
 ****************************************************************/
 .comment_content{
   padding:5px;
@@ -123,24 +138,32 @@ h1{
   margin-left: 10px;
 }
 .comment{
+  display: flex;
   margin: 20px;
   background-color: white;
-  display:flex;
   flex-direction: column;
 }
-.under_comment{
-  display:flex;
-}
-.under_comment p{
-  padding:5px;
-  margin:10px;
-}
+
 .comments_form{
   margin-left:20px;
 }
 .comments_count{
-  margin:20px;
+  text-align: right;
+  margin-right: 30px;
 }
 .subcomment{
   display:flex;
+}
+
+
+
+
+/*********************************************************
+              VOTES
+*********************************************************/
+
+.votes {
+  text-align: right;
+  margin-right: 20px;
+  margin-bottom: 10px;
 }
